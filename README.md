@@ -1,8 +1,12 @@
 # Linux Commands
-I am making copy of some linux commands in rust, as part of my rust journey.
+I am creating a copy of some Linux commands in Rust as part of my Rust journey.
+
 ## Finnished Commands
+
 - cat
+
 ## Fture Commands
+
 - ls
 - ping
 - mv
