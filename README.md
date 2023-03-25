@@ -5,11 +5,11 @@ For each command, I am implementing only the core functionality that I need for 
 ## Finnished Commands
 
 - cat
+- cp
 
 ## Fture Commands
 
 - ls
 - ping
 - mv
-- cp
 - neofetch ?
