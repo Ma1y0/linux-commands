@@ -6,6 +6,7 @@
 
 - cat
 - cp
+- grep
 
 ## Future Commands
 
