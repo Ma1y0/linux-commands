@@ -19,7 +19,6 @@ struct Table {
 
 impl Table {
     fn new(path: &str) -> Result<Table, Box<dyn std::error::Error>> {
-        let prefix = path.clone();
         let mut lines: Vec<PathBuf> = Vec::new();
         let name = path.clone().to_string();
         let content = fs::read_dir(path)?;
