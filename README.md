@@ -13,4 +13,4 @@
 - ls
 - ping
 - mv
-- neofetch ?
+- neofetch-lite ?
