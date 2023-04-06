@@ -18,11 +18,13 @@ struct Table {
 }
 
 impl Table {
-    fn new(config: &Config) -> Result<Table, Box<dyn std::error::Error>> {
-        let name = config.name.clone().to_string();
+    fn new(path: &str) -> Result<Table, Box<dyn std::error::Error>> {
+        let prefix = path.clone();
         let mut lines: Vec<PathBuf> = Vec::new();
-        let contetnt = fs::read_dir(config.path[0])?;
-        for item in contetnt {
+        let name = path.clone().to_string();
+        let content = fs::read_dir(path)?;
+        // TODO: Change to iter
+        for item in content {
             let item = item?;
             lines.push(item.path());
         }
@@ -37,13 +39,20 @@ impl Table {
 
 impl fmt::Display for Table {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "[{}]\n{:?}", self.name, self.lines)
+        write!(f, "[{}]\n", self.name)?;
+        // TODO: iter
+        for i in &self.lines {
+            write!(f, "{:?}\n", i)?;
+        }
+        Ok(())
     }
 }
 
 pub fn run(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
-    let a = Table::new(&config)?;
-
-    println!("{:?}", contetns);
+    let out: Vec<Table> = config.paths.iter().map(|x| Table::new(x).unwrap()).collect();
+    
+    for i in out {
+        println!("{}", i);
+    }
     Ok(())
 }
