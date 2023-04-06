@@ -19,16 +19,8 @@ impl Config {
 }
 
 fn search<'a>(query: &'a str, file: &'a str) -> Vec<&'a str> {
-    let mut result: Vec<&str> = Vec::new();
     let query = query.to_lowercase();
-
-    for line in file.lines() {
-        if line.to_lowercase().contains(&query) {
-            result.push(line);
-        }
-    }
-
-    result
+    file.lines().filter(|x| x.to_lowercase().contains(&query)).collect()
 }
 
 pub fn run(config: Config) -> Result<(), Box<dyn std::error::Error>> {
